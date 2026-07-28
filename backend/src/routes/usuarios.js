@@ -1,9 +1,11 @@
 import Router from 'express';
 import supabase from '../config/supabase.js';
+import { verificarToken }from '../middleware/authVerifiacion.js';
+import {verificarRol} from "../middleware/authRol.js"
 
 const usuariosRouter = Router();
 
-usuariosRouter.get('/', async (req, res) => {
+usuariosRouter.get('/', verificarToken, verificarRol('admin'), async (req, res) => {
   try {
     const { data, error } = await supabase.from('usuarios').select('*');
 
