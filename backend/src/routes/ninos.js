@@ -1,5 +1,5 @@
 import Router from 'express';
-import { verificarToken } from "../middleware/authVerificacion,js"
+import { verificarToken } from '../middleware/authVerifiacion.js';
 import { verificarRol } from "../middleware/authRol.js";
 import supabase from '../config/supabase.js';
 

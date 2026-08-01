@@ -9,8 +9,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use("/usuarios", usuariosRouter);
-app.use("/auth", authRoutes);
+app.use("/api/usuarios", usuariosRouter);
+app.use("/api/auth", authRoutes);
 
 const PORT = process.env.PORT || 3000;
 
