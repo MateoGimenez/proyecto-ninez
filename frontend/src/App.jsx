@@ -3,6 +3,7 @@ import {Route, Routes} from 'react-router-dom'
 import { AuthPage } from './context/AuthContext.jsx'
 import HomePage from './page/HomePage.jsx'
 import LoginPage from './page/LoginPage.jsx'
+import Navbar from './components/navbar.jsx'
 import './App.css'
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={
           <AuthPage>
+            <Navbar />
             <HomePage />
           </AuthPage>
         } />
