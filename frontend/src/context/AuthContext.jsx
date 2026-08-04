@@ -21,7 +21,7 @@ export const AuthProvider = ({ children }) => {
 
     const login = async (email, password) => {
         try{
-            const res = await fetch(`${API_URL}/api/auth/login`, {
+            const res = await fetch(`${API_URL}/auth/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -65,6 +65,16 @@ export const AuthPage = ({ children }) => {
     const location = useLocation();
 
     if(!user){
+        return <Navigate to="/login" state={{ from: location }} replace />
+    }
+    return children;
+}
+
+export const AdminPage = ({ children }) => {
+    const { user } = useAuth();
+    const location = useLocation();
+
+    if(!user || user.usuario.rol !== 'admin'){
         return <Navigate to="/login" state={{ from: location }} replace />
     }
     return children;

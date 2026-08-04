@@ -65,8 +65,10 @@ export const Navbar = () => {
               <a href="/dispositivos">Dispositivos</a>
             </div>
           </div>
-          
-          <a href="/personal" className="nav-link">Personal</a>
+
+          {DataUser?.rol === "admin" && (
+            <a href="/admin/usuarios" className="nav-link">Usuarios</a>
+          )}
         </div>
 
         {/* GRUPO DERECHO: USUARIO */}
