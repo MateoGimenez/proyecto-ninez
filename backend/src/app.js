@@ -2,7 +2,9 @@ import 'dotenv/config';
 import express from "express";
 import cors from "cors";
 import usuariosRouter from "./routes/usuarios.js";
+import rolesRouter from "./routes/roles.js"
 import authRoutes from "./routes/authRoutes.js";
+import profesionalesRouter from './routes/profesiones.js'
 
 const app = express();
 
@@ -11,8 +13,8 @@ app.use(express.json());
 
 app.use("/api/admin/usuarios", usuariosRouter);
 app.use("/api/auth", authRoutes);
-app.use("/api/admin/roles", usuariosRouter); 
-app.use("/api/admin/profesiones", usuariosRouter); 
+app.use("/api/admin/roles", rolesRouter); 
+app.use("/api/admin/profesiones", profesionalesRouter); 
 
 const PORT = process.env.PORT || 3000;
 

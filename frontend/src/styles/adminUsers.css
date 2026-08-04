@@ -1,0 +1,124 @@
+.admin-page {
+  padding: 2rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  color: #1a202c;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Agrupador de botones */
+.button-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Botón base con transiciones y estilos globales */
+.button-actions button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  outline: none;
+}
+
+/* Estilos para el botón "Actualizar" (Variante Secundaria) */
+.btn-refresh {
+  background-color: #ffffff;
+  color: #2d3748;
+  border-color: #cbd5e0 !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.btn-refresh:hover:not(:disabled) {
+  background-color: #f7fafc;
+  border-color: #a0aec0 !important;
+  color: #1a202c;
+}
+
+.btn-refresh:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: #edf2f7;
+}
+
+/* Estilos para el botón "Agregar" (Variante Primaria) */
+.button-actions button:not(.btn-refresh) {
+  background-color: #3182ce;
+  color: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.button-actions button:not(.btn-refresh):hover {
+  background-color: #2b6cb0;
+}
+
+.button-actions button:active {
+  transform: translateY(1px);
+}
+.admin-status { padding: 1rem; color: #4a5568; }
+.admin-status--error { color: #e53e3e; }
+
+.admin-table-wrapper {
+  overflow-x: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.admin-table { width: 100%; border-collapse: collapse; background: #fff; }
+
+.admin-table th,
+.admin-table td {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #edf2f7;
+  font-size: 0.9rem;
+}
+
+.admin-table th {
+  background: #1a202c;
+  color: #e2e8f0;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+.admin-table tbody tr:hover { background: #f7fafc; }
+.admin-empty { text-align: center; color: #a0aec0; padding: 2rem !important; }
+
+.badge {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.badge--admin { background: #ebf8ff; color: #2b6cb0; }
+.badge--default { background: #edf2f7; color: #4a5568; }
+.badge--active { background: #f0fff4; color: #2f855a; }
+.badge--inactive { background: #fff5f5; color: #c53030; }
+
+.btn-delete {
+  background: #fff5f5;
+  color: #c53030;
+  border: 1px solid #feb2b2;
+  border-radius: 6px;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.btn-delete:hover { background: #fed7d7; }
