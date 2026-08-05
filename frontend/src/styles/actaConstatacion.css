@@ -1,0 +1,253 @@
+:root {
+  --ink: #1a1a1a;
+  --line: #c9c9c9;
+  --accent: #2c5f8a;
+  --bg: #f4f4f2;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.acta-container {
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  margin: 0;
+  padding: 24px;
+}
+
+.acta-title {
+  font-size: 18px;
+  margin: 0 0 4px;
+}
+
+.subtitle {
+  color: #666;
+  font-size: 13px;
+  margin: 0 0 20px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.panel {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 18px;
+}
+
+.panel-transparent {
+  padding: 0;
+  background: transparent;
+  border: none;
+}
+
+.panel h2 {
+  font-size: 14px;
+  margin: 0 0 12px;
+  color: var(--accent);
+}
+
+.panel label {
+  display: block;
+  font-size: 12px;
+  font-weight: bold;
+  margin: 12px 0 4px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 13px;
+}
+
+textarea.input-field {
+  resize: vertical;
+  min-height: 90px;
+}
+
+.row3 {
+  display: grid;
+  grid-template-columns: 70px 1fr 90px;
+  gap: 8px;
+}
+
+.sig-block {
+  margin-top: 14px;
+}
+
+.sig-block canvas {
+  width: 100%;
+  height: 110px;
+  border: 1px dashed var(--line);
+  border-radius: 4px;
+  background: #fff;
+  touch-action: none;
+}
+
+.sig-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 4px;
+}
+
+.sig-actions button {
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-size: 12px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.export-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.export-actions button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#btn-pdf {
+  background: var(--accent);
+  color: #fff;
+}
+
+#btn-word {
+  background: #2c5f2d;
+  color: #fff;
+}
+
+.note {
+  font-size: 11px;
+  color: #888;
+  margin-top: 10px;
+  line-height: 1.4;
+}
+
+/* --- Vista previa del acta (esto es lo que se exporta) --- */
+#acta {
+  background: #fff;
+  border: 1px solid var(--line);
+  padding: 40px 50px;
+  min-height: 600px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #000;
+}
+
+.membrete {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-bottom: 2px solid #000;
+  padding-bottom: 10px;
+  margin-bottom: 24px;
+}
+
+.membrete .logo {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  text-align: center;
+  position: relative;
+}
+
+.membrete .logo img{
+  border-radius: 100px;
+  position: absolute;
+  width: 70px;
+  border-color: #000;
+
+}
+.membrete .texto {
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.membrete .texto strong {
+  display: block;
+  font-size: 12px;
+}
+
+.titulo {
+  text-align: center;
+  font-weight: bold;
+  text-decoration: underline;
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.cuerpo {
+  font-size: 13px;
+  line-height: 1.9;
+  text-align: justify;
+}
+
+.cuerpo .blank {
+  display: inline-block;
+  border-bottom: 1px solid #000;
+  min-width: 40px;
+  padding: 0 2px;
+  font-weight: bold;
+}
+
+.descripcion {
+  margin-top: 18px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  min-height: 90px;
+  font-size: 13px;
+  white-space: pre-wrap;
+}
+
+.firmas {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 60px;
+  gap: 30px;
+}
+
+.firma-col {
+  flex: 1;
+  text-align: center;
+}
+
+.firma-col img {
+  max-height: 70px;
+  display: block;
+  margin: 0 auto 4px;
+}
+
+.firma-col .linea {
+  border-top: 1px solid #000;
+  margin-top: 6px;
+  padding-top: 4px;
+  font-size: 11px;
+}

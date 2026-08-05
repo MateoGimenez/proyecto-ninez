@@ -8,6 +8,7 @@ import AdminUsers from './admin/AdminUsers.jsx'
 import ActasPage from "./page/ActasPage.jsx"
 import Footer from './components/Footer.jsx'
 import DispositivosPage from "./page/DispositivosPage.jsx"
+import ActaConstatacion from './page/ActaConstatacion.jsx'
 import './App.css'
 
 function App() {
@@ -34,7 +35,7 @@ function App() {
         <Route path="/actas" element={
           <AuthPage>
             <Navbar/>
-            <ActasPage/>
+            <ActaConstatacion/>
             <Footer/>
           </AuthPage>
         } />
