@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { getRoles } from "../../services/servicesRol.jsx";
-import { getProfesiones } from '../../services/servicesProfesiones.jsx';
-import { createUser } from '../../services/servicesUsers.jsx';
+import { getRoles } from "../../services/servicesRol.js";
+import { getProfesiones } from '../../services/servicesProfesiones.js';
+import { createUser } from '../../services/servicesUsers.js';
 import "../../styles/crearUsuario.css";
 
 const CrearUsuario = ({ onSuccess, token, auth, onClose }) => {

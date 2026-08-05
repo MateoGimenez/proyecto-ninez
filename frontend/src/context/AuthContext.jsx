@@ -12,7 +12,7 @@ export const useAuth = () => {
 };
 
 export const AuthProvider = ({ children }) => {
-    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api';
     const [user, setUser] = useState(() =>{
         // Esto sirve para recuperar la sesión del usuario si recarga la página. Se puede almacenar en localStorage o sessionStorage según tus necesidades.
         const savedUser = sessionStorage.getItem('user');

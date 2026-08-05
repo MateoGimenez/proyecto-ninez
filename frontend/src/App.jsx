@@ -5,7 +5,9 @@ import HomePage from './page/HomePage.jsx'
 import LoginPage from './page/LoginPage.jsx'
 import Navbar from './components/navbar.jsx'
 import AdminUsers from './admin/AdminUsers.jsx'
+import ActasPage from "./page/ActasPage.jsx"
 import Footer from './components/Footer.jsx'
+import DispositivosPage from "./page/DispositivosPage.jsx"
 import './App.css'
 
 function App() {
@@ -28,6 +30,22 @@ function App() {
             <Footer />
           </AdminPage>
         } />
+
+        <Route path="/actas" element={
+          <AuthPage>
+            <Navbar/>
+            <ActasPage/>
+            <Footer/>
+          </AuthPage>
+        } />
+        <Route path="/dispositivos" element={
+          <AuthPage>
+            <Navbar/>
+            <DispositivosPage/>
+            <Footer/>
+          </AuthPage>
+        } />
+
 
         <Route path="/login" element={<LoginPage />} />
       </Routes>

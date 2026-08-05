@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getUsers, deleteUser } from '../services/servicesUsers.jsx';
+import { getUsers, deleteUser } from '../services/servicesUsers.js';
 import Loading from '../components/Loading.jsx';
 import CrearUsuario from "../components/modals/formUsers.jsx";
 import { useAuth } from '../context/AuthContext.jsx';
