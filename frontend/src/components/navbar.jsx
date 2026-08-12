@@ -92,7 +92,7 @@ export const Navbar = () => {
 
           <div className="brand-info">
             <span className="brand-name">
-              App<span>Admin</span>
+              DGG<span></span>
             </span>
 
             <span className="brand-subtitle">
@@ -207,7 +207,24 @@ export const Navbar = () => {
               </NavLink>
 
             </div>
+            
           </div>
+
+
+          {/* NIÑOS */}
+
+          <NavLink
+            to="/ninos"
+            onClick={closeEverything}
+            className={({ isActive }) =>
+              `navigation-link ${
+                isActive ? "active" : ""
+              }`
+            }
+          >
+            <span className="nav-icon">🪁</span>
+            <span>Niños</span>
+          </NavLink>
 
           {/* USUARIOS */}
 
@@ -260,6 +277,7 @@ export const Navbar = () => {
                 </NavLink>
 
               </div>
+              
             </div>
           )}
 

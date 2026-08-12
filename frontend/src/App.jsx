@@ -8,6 +8,7 @@ import AdminUsers from './admin/AdminUsers.jsx'
 import DispositivosPage from "./page/DispositivosPage.jsx"
 import ActaConstatacion from './page/ActaConstatacion.jsx'
 import PerfilPage from './page/PerfilPage.jsx'
+import NinosPage from "./page/NinosPage.jsx"
 import './App.css'
 
 function App() {
@@ -51,6 +52,14 @@ function App() {
           <AuthPage>
             <Layout>
               <PerfilPage/>
+            </Layout>
+          </AuthPage>
+        } />
+
+        <Route path="/ninos" element={
+          <AuthPage>
+            <Layout>
+              <NinosPage/>
             </Layout>
           </AuthPage>
         } />

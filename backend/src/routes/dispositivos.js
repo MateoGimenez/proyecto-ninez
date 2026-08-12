@@ -5,25 +5,39 @@ import { verificarRol } from "../middleware/authRol.js";
 
 const router = Router();
 
-router.get('/', verificarToken, async (req, res) => {
-    try{
-        const {data, error} = await supabase.from("dispositivos").select("*");
+router.get('/', async (req, res) => {
+  try {
+    const { data: dispositivos, error: errDisp } = await supabase
+      .from('dispositivos')
+      .select('*')
+      .order('id', { ascending: true })
 
-        if(error){
-            console.error(error);
-            return res.status(500).json({error: "Error al obtener los dispositivos"});
-        }
+    if (errDisp) throw errDisp
 
-        if(!data || data.length === 0){
-            return res.status(404).json({error: "No se encontraron dispositivos"});
-        }
+    const { data: ninos, error: errNinos } = await supabase
+      .from('ninos')
+      .select('dispositivo_id')
+      .is('egreso', null) // solo niños actuales, no egresados
 
-        return res.status(200).json({dispositivos: data, mensaje: "dispositivos obtenidos correctamente"});
-    }catch(error){
-        console.error(error);
-        res.status(500).json({error: "Error al obtener los dispositivos"});
-    }
-});
+    if (errNinos) throw errNinos
+
+    // Agrupar conteo de niños por dispositivo_id
+    const conteoPorDispositivo = ninos.reduce((acc, n) => {
+      acc[n.dispositivo_id] = (acc[n.dispositivo_id] || 0) + 1
+      return acc
+    }, {})
+
+    const dispositivosConNinos = dispositivos.map((d) => ({
+      ...d,
+      cantidadNinos: conteoPorDispositivo[d.id] || 0,
+    }))
+
+    res.json({ dispositivos: dispositivosConNinos })
+  } catch (error) {
+    console.error('Error al obtener dispositivos:', error.message)
+    res.status(500).json({ mensaje: 'Error al obtener dispositivos', error: error.message })
+  }
+})
 
 router.post('/', verificarToken, verificarRol('admin'), async (req, res) => {
     try{

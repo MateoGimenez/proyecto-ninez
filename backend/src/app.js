@@ -7,6 +7,7 @@ import authRoutes from "./routes/authRoutes.js";
 import profesionalesRouter from './routes/profesiones.js'
 import dispositivosRouter from "./routes/dispositivos.js"
 import dashboardRouter from "./routes/dashboard.js"
+import ninosRouter from "./routes/ninos.js"
 
 const app = express();
 
@@ -19,6 +20,7 @@ app.use("/api/admin/roles", rolesRouter);
 app.use("/api/admin/profesiones", profesionalesRouter); 
 app.use("/api/admin/dispositivos" , dispositivosRouter)
 app.use("/api/dashboard/stats" , dashboardRouter)
+app.use("/api/admin/ninos" , ninosRouter)
 
 const PORT = process.env.PORT || 3000;
 
