@@ -1,5 +1,6 @@
 .admin-page {
   padding: 2rem;
+  height: 80vh;
   font-family: system-ui, -apple-system, sans-serif;
   color: #1a202c;
 }

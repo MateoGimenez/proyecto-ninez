@@ -6,6 +6,7 @@ import rolesRouter from "./routes/roles.js"
 import authRoutes from "./routes/authRoutes.js";
 import profesionalesRouter from './routes/profesiones.js'
 import dispositivosRouter from "./routes/dispositivos.js"
+import dashboardRouter from "./routes/dashboard.js"
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/admin/roles", rolesRouter); 
 app.use("/api/admin/profesiones", profesionalesRouter); 
 app.use("/api/admin/dispositivos" , dispositivosRouter)
+app.use("/api/dashboard/stats" , dashboardRouter)
 
 const PORT = process.env.PORT || 3000;
 
