@@ -76,6 +76,7 @@ function DispositivosPage() {
 
         {error && <p className="dispositivos-error">{error}</p>}
 
+        {user.usuario.rol === "admin" && (
         <form className="dispositivos-form" onSubmit={handleCreate}>
           <input
             className="dispositivos-input"
@@ -97,6 +98,7 @@ function DispositivosPage() {
             {creating ? 'Creando...' : 'Agregar dispositivo'}
           </button>
         </form>
+        )}
 
         {loading ? (
           <p className="dispositivos-loading">Cargando dispositivos...</p>
@@ -116,7 +118,8 @@ function DispositivosPage() {
                 <tr key={d.id}>
                   <td>{d.nombre}</td>
                   <td>{d.direccion}</td>
-                  <td>
+                  {user.usuario.rol === "admin" && (
+                    <td>
                     <button
                       className="dispositivos-delete-btn"
                       onClick={() => handleDelete(d.id)}
@@ -124,6 +127,7 @@ function DispositivosPage() {
                       Eliminar
                     </button>
                   </td>
+                  )}
                 </tr>
               ))}
             </tbody>

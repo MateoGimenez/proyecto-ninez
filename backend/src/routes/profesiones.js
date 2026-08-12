@@ -5,7 +5,7 @@ import { verificarRol } from "../middleware/authRol.js";
 
 const profesionalesRouter = router();
 
-profesionalesRouter.get('/', verificarToken, verificarRol('admin'), async (req, res) => {
+profesionalesRouter.get('/', verificarToken, verificarRol(['admin', 'user']), async (req, res) => {
   try {
     const { data, error } = await supabase.from('profesiones').select('*');
 

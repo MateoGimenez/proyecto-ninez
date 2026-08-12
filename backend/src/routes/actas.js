@@ -6,7 +6,7 @@ import { verificarRol } from "../middleware/authRol.js";
 const router = Router();
 
 // GET: Obtener todas las actas
-router.get('/', verificarToken, verificarRol('admin'), async (req, res) => {
+router.get('/', verificarToken, verificarRol(['admin', 'user']), async (req, res) => {
     try {
         const { data, error } = await supabase
             .from("actas")
@@ -39,7 +39,7 @@ router.get('/', verificarToken, verificarRol('admin'), async (req, res) => {
 
 
 // POST: Crear una nueva acta
-router.post('/', verificarToken, verificarRol('admin'), async (req, res) => {
+router.post('/', verificarToken,verificarRol(['admin', 'user']), async (req, res) => {
     try {
         // 1. Extraemos los campos requeridos desde el body
         const { descripcion, firma_interesado, firma_interviniente } = req.body;

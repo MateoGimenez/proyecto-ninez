@@ -3,12 +3,11 @@ import { AuthPage } from './context/AuthContext.jsx'
 import { AdminPage } from './context/AuthContext.jsx'
 import HomePage from './page/HomePage.jsx'
 import LoginPage from './page/LoginPage.jsx'
-import Navbar from './components/navbar.jsx'
+import Layout from './components/Layout.jsx'
 import AdminUsers from './admin/AdminUsers.jsx'
-import ActasPage from "./page/ActasPage.jsx"
-import Footer from './components/Footer.jsx'
 import DispositivosPage from "./page/DispositivosPage.jsx"
 import ActaConstatacion from './page/ActaConstatacion.jsx'
+import PerfilPage from './page/PerfilPage.jsx'
 import './App.css'
 
 function App() {
@@ -18,35 +17,43 @@ function App() {
       <Routes>
         <Route path="/" element={
           <AuthPage>
-            <Navbar />
-            <HomePage />
-            <Footer />
+            <Layout>
+              <HomePage />
+            </Layout>
           </AuthPage>
         } />
 
         <Route path="/admin/usuarios" element={
           <AdminPage>
-            <Navbar />
-            <AdminUsers />
-            <Footer />
+            <Layout>
+              <AdminUsers />
+            </Layout>
           </AdminPage>
         } />
 
         <Route path="/actas" element={
           <AuthPage>
-            <Navbar/>
-            <ActaConstatacion/>
-            <Footer/>
-          </AuthPage>
-        } />
-        <Route path="/dispositivos" element={
-          <AuthPage>
-            <Navbar/>
-            <DispositivosPage/>
-            <Footer/>
+            <Layout>
+              <ActaConstatacion />
+            </Layout>
           </AuthPage>
         } />
 
+        <Route path="/dispositivos" element={
+          <AuthPage>
+            <Layout>
+              <DispositivosPage />
+            </Layout>
+          </AuthPage>
+        } />
+
+        <Route path="/perfil" element={
+          <AuthPage>
+            <Layout>
+              <PerfilPage/>
+            </Layout>
+          </AuthPage>
+        } />
 
         <Route path="/login" element={<LoginPage />} />
       </Routes>

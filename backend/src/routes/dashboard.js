@@ -5,7 +5,7 @@ import { verificarRol } from '../middleware/authRol.js';
 
 const router = Router();
 
-router.get('/', verificarToken, verificarRol(['admin']), async (req, res) => {
+router.get('/', verificarToken ,  async (req, res) => {
   try {
     const [
       // --- USUARIOS ---
