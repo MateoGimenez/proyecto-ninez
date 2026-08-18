@@ -87,7 +87,7 @@ export const Navbar = () => {
           onClick={closeEverything}
         >
           <div className="brand-icon">
-            A
+            D
           </div>
 
           <div className="brand-info">

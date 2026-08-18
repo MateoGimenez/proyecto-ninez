@@ -6,7 +6,7 @@ import supabase from '../config/supabase.js';
 const router = Router();
 
 // GET /ninos — listar todos los niños
-router.get('/', verificarToken, verificarRol(['admin', 'user']), async (req, res) => {
+router.get('/', verificarToken, verificarRol('admin', 'user'), async (req, res) => {
   try {
     const { data, error } = await supabase
       .from('ninos')
@@ -30,7 +30,7 @@ router.get('/', verificarToken, verificarRol(['admin', 'user']), async (req, res
 });
 
 // GET /ninos/:id — obtener un niño puntual
-router.get('/:id', verificarToken, verificarRol(['admin', 'user']), async (req, res) => {
+router.get('/:id', verificarToken, verificarRol('admin', 'user'), async (req, res) => {
   try {
     const { id } = req.params;
 
@@ -52,7 +52,7 @@ router.get('/:id', verificarToken, verificarRol(['admin', 'user']), async (req, 
 });
 
 // POST /ninos — registrar un niño nuevo
-router.post('/', verificarToken, verificarRol(['admin']), async (req, res) => {
+router.post('/', verificarToken, verificarRol('admin'), async (req, res) => {
   try {
     const {
       nombre,
@@ -100,7 +100,7 @@ router.post('/', verificarToken, verificarRol(['admin']), async (req, res) => {
 });
 
 // PATCH /ninos/:id — actualizar datos de un niño (incluye marcar egreso)
-router.patch('/:id', verificarToken, verificarRol(['admin']), async (req, res) => {
+router.patch('/:id', verificarToken, verificarRol('admin'), async (req, res) => {
   try {
     const { id } = req.params;
 

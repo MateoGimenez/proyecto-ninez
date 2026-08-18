@@ -452,8 +452,18 @@ function NinosPage() {
                         <p>{n.medida || 'No especificada'}</p>
                       </div>
                       <div>
-                        <span className="nino-detalle-label">Diagnóstico</span>
-                        <p>{n.diagnostico || 'No especificado'}</p>
+                        <span className="nino-detalle-label">Cud</span>
+                        <p>{n.cud === true? "Si" : "No"}</p>
+                      </div>
+                      {Boolean(n.diagnostico) && (
+                        <div>
+                          <span className="nino-detalle-label">Diagnóstico</span>
+                          <p>{n.diagnostico}</p>
+                        </div>
+                      )}
+                      <div>
+                        <span className="nino-detalle-label">Fecha de Ingreso</span>
+                        <p>{formatFecha(n.ingreso)}</p>
                       </div>
                       <div>
                         <span className="nino-detalle-label">Fecha de nacimiento</span>
