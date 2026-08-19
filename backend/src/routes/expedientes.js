@@ -4,7 +4,7 @@ import supabase from '../config/supabase.js';
 import supabaseAdmin from '../config/supabaseAdmin.js';
 import { verificarToken } from '../middleware/authVerifiacion.js';
 import { verificarRol } from '../middleware/authRol.js';
-import {generarRutaExpediente, subirExpediente, obtenerLinkDescarga} from '../helpers/supabaseStorageHelper.js';
+import {generarRutaExpediente, subirExpediente, obtenerLinkDescarga , eliminarExpediente} from '../helpers/supabaseStorageHelper.js';
 
 const router = Router();
 
@@ -315,6 +315,77 @@ router.post(
       console.error('Error en upload de expediente:', error);
       res.status(500).json({
         error: 'Error interno al procesar el expediente',
+      });
+    }
+  }
+);
+
+/**
+ * DELETE /api/expedientes/:ninoId/:expedienteId
+ * Elimina un expediente (archivo + registro BD)
+ * 
+ * Params:
+ * - ninoId (number) - ID del niño
+ * - expedienteId (number) - ID del expediente
+ */
+router.delete(
+  '/:ninoId/:expedienteId',
+  verificarToken,
+  verificarRol('admin', 'user'),
+  async (req, res) => {
+    try {
+      const { ninoId, expedienteId } = req.params;
+
+      // Obtener el expediente
+      const { data: expediente, error: errorExp } = await supabase
+        .from('expedientes')
+        .select('id, nino_id, ruta_storage, nombre_original')
+        .eq('id', expedienteId)
+        .eq('nino_id', ninoId)
+        .single();
+
+      if (errorExp || !expediente) {
+        return res.status(404).json({
+          error: 'Expediente no encontrado',
+        });
+      }
+
+      // 1. Eliminar archivo de Storage
+      try {
+        await eliminarExpediente(expediente.ruta_storage);
+      } catch (errorStorage) {
+        console.error('Error eliminando de Storage:', errorStorage.message);
+        return res.status(500).json({
+          error: 'Error al eliminar el archivo',
+        });
+      }
+
+      // 2. Eliminar registro de BD
+      const { error: errorBD } = await supabase
+        .from('expedientes')
+        .delete()
+        .eq('id', expedienteId);
+
+      if (errorBD) {
+        console.error('Error eliminando de BD:', errorBD);
+        return res.status(500).json({
+          error: 'Error al eliminar el registro de la base de datos',
+        });
+      }
+
+      // 3. Respuesta exitosa
+      return res.status(200).json({
+        mensaje: 'Expediente eliminado correctamente',
+        expediente: {
+          id: expediente.id,
+          nombreOriginal: expediente.nombre_original,
+          rutaStorage: expediente.ruta_storage,
+        },
+      });
+    } catch (error) {
+      console.error('Error eliminando expediente:', error);
+      res.status(500).json({
+        error: 'Error interno al eliminar el expediente',
       });
     }
   }
