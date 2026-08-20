@@ -276,7 +276,26 @@ export const Navbar = () => {
                   </span>
                 </NavLink>
 
+                <NavLink to={"/admin/estadisticas"}
+                onClick={closeEverything}
+                className="dropdown-item"
+                >
+                  <span className="dropdown-item-icon">
+                    📈
+                  </span>
+
+                  <span>
+                    <strong>Estasdisticas</strong>
+                    <small>
+                      Estadisticas generales
+                    </small>
+                  </span>
+
+                </NavLink>
+
               </div>
+
+              
               
             </div>
           )}

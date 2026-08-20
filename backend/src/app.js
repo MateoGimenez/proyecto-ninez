@@ -10,6 +10,7 @@ import dashboardRouter from "./routes/dashboard.js"
 import ninosRouter from "./routes/ninos.js"
 import expedientesRouter from "./routes/expedientes.js"
 import tiposExpedienteRouter from "./routes/tiposExpedientes.js";
+import dashboardEstadisticasRouter from "./routes/dashboard-estadisticas.js";
 
 const app = express();
 
@@ -25,6 +26,8 @@ app.use("/api/dashboard/stats" , dashboardRouter)
 app.use("/api/admin/ninos" , ninosRouter)
 app.use("/api/expedientes", expedientesRouter);
 app.use("/api/admin/tipos-expediente", tiposExpedienteRouter);
+app.use("/api/dashboard/estadisticas", dashboardEstadisticasRouter);
+
 
 const PORT = process.env.PORT || 3000;
 

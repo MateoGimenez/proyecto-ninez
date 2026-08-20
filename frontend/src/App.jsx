@@ -10,6 +10,7 @@ import ActaConstatacion from './page/ActaConstatacion.jsx'
 import PerfilPage from './page/PerfilPage.jsx'
 import NinosPage from "./page/NinosPage.jsx"
 import ExpedientesPage from "./page/ExpedientesPage.jsx"
+import DashboardPage from './page/DashBoard.jsx'
 import './App.css'
 
 function App() {
@@ -72,6 +73,16 @@ function App() {
             </Layout>
           </AuthPage>
         }/>
+
+        <Route path='admin/estadisticas' element={
+          <AuthPage>
+            <Layout>
+              <DashboardPage/>
+            </Layout>
+          </AuthPage>
+        }/>
+      
+
 
         <Route path="/login" element={<LoginPage />} />
       </Routes>
